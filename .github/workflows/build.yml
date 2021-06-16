@@ -1,5 +1,9 @@
 name: Test setup-node caching for npm
-on: [push, workflow_dispatch]
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - npm-test
 jobs:
   run:
     name: Node test
