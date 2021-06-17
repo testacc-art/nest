@@ -1,9 +1,5 @@
-name: Test setup-node caching for npm
-on:
-  workflow_dispatch:
-  push:
-    branches:
-      - npm-test
+name: Test setup-node caching
+on: [workflow_dispatch]
 jobs:
   run:
     name: Node test
@@ -21,11 +17,13 @@ jobs:
       with:
         node-version: ${{ matrix.version }}
         cache: npm
-    - name: Node version 
+    - name: Node version
       shell: pwsh
       run: node --version
+    - name: Yarn version
+      run: yarn --version
     - name: Npm version
       shell: pwsh
       run: npm --version
     - name: Install dependencies
-      run: npm install
+      run: yarn install
