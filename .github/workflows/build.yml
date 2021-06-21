@@ -25,4 +25,4 @@ jobs:
       shell: pwsh
       run: npm --version
     - name: Install dependencies
-      run: yarn install
+      run: npm install
