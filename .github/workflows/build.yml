@@ -19,13 +19,6 @@ jobs:
     - name: Generate simple .yarnrc.yml
       run: |
         echo "nodeLinker: node-modules" >> .yarnrc.yml
-    - name: Generate yarn file
-      run: yarn install
-    - name: Remove dependencies
-      shell: pwsh
-      run: Remove-Item node_modules -Force -Recurse
-    - name: Clean global cache
-      run: yarn cache clean --all
     - uses: akv-platform/setup-node@add-caching-for-node-dependencies
       with:
         node-version: ${{ matrix.version }}
@@ -40,9 +33,3 @@ jobs:
       run: npm --version
     - name: Install dependencies
       run: yarn install
-    - name: upload screenshot
-      if: ${{ always() }}
-      uses: actions/upload-artifact@master
-      with:
-        name: yarn.lock
-        path: yarn.lock
