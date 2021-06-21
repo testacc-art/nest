@@ -8,13 +8,14 @@ jobs:
       fail-fast: false
       matrix:
         operating-system: [ubuntu-18.04, macos-latest, windows-latest]
-        version: [ '12.x', '14.x', '16.x' ]
+        version: [ '12.x' ]
     steps:
     - name: Checkout
       uses: actions/checkout@v2
     - uses: akv-platform/setup-node@add-caching-for-node-dependencies
       with:
         node-version: ${{ matrix.version }}
+        cache: npm
     - name: Node version
       shell: pwsh
       run: node --version
