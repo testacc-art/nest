@@ -19,10 +19,9 @@ jobs:
     - name: Generate simple .yarnrc.yml
       run: |
         echo "nodeLinker: node-modules" >> .yarnrc.yml
-    - uses: akv-platform/setup-node@add-caching-for-node-dependencies
+    - uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.version }}
-        cache: yarn
     - name: Node version
       shell: pwsh
       run: node --version
