@@ -12,7 +12,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - uses: akv-platform/setup-node@add-caching-for-node-dependencies
+    - uses: dmitry-shibanov/setup-node@v-dmshib/test-silent
       with:
         node-version: ${{ matrix.version }}
         cache: npm
