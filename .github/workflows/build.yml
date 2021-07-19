@@ -1,5 +1,5 @@
 name: Test setup-node caching
-on: [push, workflow_dispatch]
+on: [workflow_dispatch]
 jobs:
   run:
     name: Node test
@@ -9,6 +9,7 @@ jobs:
       matrix:
         operating-system: [ubuntu-18.04, macos-latest, windows-latest]
         version: [ '12.x' ]
+        cache: [ npm, pnpm, yarn ]
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -16,7 +17,7 @@ jobs:
     - uses: jacobwgillespie/setup-node@cache-pnpm
       with:
         node-version: ${{ matrix.version }}
-        cache: pnpm
+        cache: ${{ matrix.cache }}
     - name: Node version
       shell: pwsh
       run: node --version
