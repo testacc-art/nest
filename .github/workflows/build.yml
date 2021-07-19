@@ -12,7 +12,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - uses: dmitry-shibanov/setup-node@v-dmshib/test-silent
+    - uses: jacobwgillespie/setup-node@cache-pnpm # dmitry-shibanov/setup-node@v-dmshib/test-silent
       with:
         node-version: ${{ matrix.version }}
         cache: npm
