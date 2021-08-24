@@ -7,21 +7,21 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        operating-system: [ubuntu-18.04, macos-latest, windows-latest]
+        operating-system: [macos-latest]
         version: [ '12.x', '14.x', '16.x' ]
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - uses: akv-platform/setup-node@add-caching-for-node-dependencies
+      
+    - uses: actions/cache@v2
+      with:
+        path: /Users/runner/.npm
+        key: ${{ runner.os }}-test-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-test-
+          ${{ runner.os }}-
+    - uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.version }}
-    - name: Node version
-      shell: pwsh
-      run: node --version
-    - name: Yarn version
-      run: yarn --version
-    - name: Npm version
-      shell: pwsh
-      run: npm --version
     - name: Install dependencies
       run: npm install
