@@ -12,8 +12,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-#     - run: npm install --save-dev nodemon
-    - uses: WtfJoke/setup-node@addCacheHitOutPut # dmitry-shibanov/setup-node@v-dmshib/test-silent
+    - uses: actions/setup-node@v2 # dmitry-shibanov/setup-node@v-dmshib/test-silent
       id: cache
       with:
         node-version: ${{ matrix.version }}
@@ -28,4 +27,4 @@ jobs:
       run: npm --version
     - run: echo ${{ steps.cache.outputs.cache-hit }}
     - name: Install dependencies
-      run: npm install
+      run: npm ci
