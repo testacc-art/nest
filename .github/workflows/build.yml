@@ -12,9 +12,9 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - uses: akv-platform/setup-node@add-caching-for-node-dependencies
+    - uses: testacc-art/testCompositeAction@main
       with:
-        node-version: ${{ matrix.version }}
+        who-to-greet: 'Mona the Octocat'
     - name: Node version
       shell: pwsh
       run: node --version
