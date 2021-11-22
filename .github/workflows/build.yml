@@ -12,10 +12,9 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - uses: actions/setup-node@v2.4.0
+    - uses: testacc-art/testCompositeAction@main
       with:
-        node-version: ${{ matrix.version }}
-        cache: yarn
+        who-to-greet: 'Mona the Octocat'
     - name: Node version
       shell: pwsh
       run: node --version
